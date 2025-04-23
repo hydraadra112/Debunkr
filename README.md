@@ -1,14 +1,14 @@
----
-title: SciDocuParse
-emoji: 🏆
-colorFrom: yellow
-colorTo: yellow
-sdk: streamlit
-sdk_version: 1.43.2
-app_file: app.py
-pinned: false
-license: mit
-short_description: A scientific document graph interpreter & analyzer
----
+# **Debunkr**
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+## Description
+
+A Filipino fake news classifier, created using Python machine learning libraries, and SvelteKit with LIME.
+
+This is a final project for our CCS 249 - Natural Language Processing course.
+
+## Creators
+- [John Manuel Carado](https://github.com/hydraadra112)
+- [Cherilyn Marie Deocampo](https://github.com/chiichann)
+- [Mark Andrei Encanto](https://github.com/Markndrei)
+- [Chariz Dianne Falco](https://github.com/chariz1101)
+- [Jephone Israel Jireh S. Torre](https://github.com/JephoneTorre)
