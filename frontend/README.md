@@ -1,38 +1,31 @@
-# sv
+# Notes from Manns
+For our front-end development, it is crucial that we adhere to the standards that have been set by professionals. So that, subong palang, ma amat amat na naton refine aton skills and work on our habits.
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is to ensure that we avoid the common mistakes that amateur web developers make. **Which is spaghetti, unmaintainable, and unmodularized code**. To avoid it, I propose a few rules para maging organized kita.
 
-## Creating a project
+- All pages should be in a folder `$routes/page_name/` with a `+page.svelte` as the source code.
+- All components that are being reused at least **twice** on multiple pages should be put under `$routes/components/`.
+- Create a components folder `$routes/page_name/components/` for a specific page if it is only used in that page, and is used at least twice.
+- Color palettes, typefaces, sizing, etc., should be defined globally (`global.css`) to ensure consistent styling.
 
-If you're seeing this, you've probably already done this step. Congrats!
+These are simple spells, but they're quite unbreakable. These rules will return a greater investment in the future.
 
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Setup Development
+To properly set up the front-end, run the following code:
 
 ```bash
-npm run dev
+npm install # installs all dependencies you will need
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+npm run dev -- --open # To run the front-end locally
 ```
+
+For more information, visit the [SvelteKit](https://svelte.dev/docs/kit/introduction) documentation.
 
 ## Building
-
-To create a production version of your app:
+When we finish code and ready to deploy the app, we run:
 
 ```bash
 npm run build
 ```
 
 You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
