@@ -1,5 +1,5 @@
 module.exports = {
-    content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,.svelte}'],
+    content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,svelte}'],
     theme: {
       extend: {
         fontFamily: {
@@ -9,7 +9,7 @@ module.exports = {
           mono: ['var(--font-mono)'],
         },
         colors: {
-          c1: 'var(--color-c1)',
+          c1: '#E2C275',
           c2: 'var(--color-c2)',
           c3: 'var(--color-c3)',
           c4: 'var(--color-c4)',
