@@ -6,6 +6,7 @@
 
 <script>
 	import Header from './components/Header.svelte';
+	import Footer from './components/Footer.svelte';
 	import '../global.css';
 
 	let { children } = $props();
@@ -18,9 +19,7 @@
 		{@render children()}
 	</main>
 
-	<footer>
-		<p>Hello from FOOTER!</p>
-	</footer>
+	<Footer/>
 </div>
 
 <style>
