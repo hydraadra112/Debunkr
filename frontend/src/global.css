@@ -40,6 +40,19 @@
 	
 }
 
+.font-title {
+	font-family: 'Attena', sans-serif;
+  }
+  
+.font-body {
+	font-family: 'LufgaRegular', sans-serif;
+}
+
+.font-heading {
+	font-family: 'LufgaBold', sans-serif;
+}
+
+
 a, p {
 	font-family: var(--font-body);
 }
