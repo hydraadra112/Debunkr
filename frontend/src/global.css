@@ -6,22 +6,23 @@
 
 @font-face {
 	font-family: 'LufgaRegular';
-	src: url(/frontend/static/fonts/LufgaRegular.woff) format('woff');
+	src: url('/fonts/LufgaRegular.woff') format('woff');
 	font-weight: 400;
-	font-style: normal;
+	font-display: swap;
   }
   
   @font-face {
 	font-family: 'LufgaBold';
-	src: url(/frontend/static/fonts/LufgaBold.woff) format('woff');
+	src: url('/fonts/LufgaBold.woff') format('woff');
 	font-weight: 700;
-	font-style: normal;
+	font-display: swap;
   }
   
   @font-face {
 	font-family: 'Attena';
-	src: url(/frontend/src/static/fonts/Attena.otf) format('opentype');
+	src: url('/fonts/Attena.otf') format('opentype');
 	font-weight: 400;
+	font-display: swap;
   }
 :root {
 	/* Feel free to modify the colors to match */
