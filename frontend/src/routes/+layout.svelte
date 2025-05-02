@@ -1,4 +1,3 @@
-
 <!-- This file is for layouting consistencies only. 
 	Since we use our header for almost every page,
 	It is necessary to put them here
@@ -13,7 +12,7 @@
 
 <div class="app">
 	<Header />
-	
+
 	<main>
 		{@render children()}
 	</main>
