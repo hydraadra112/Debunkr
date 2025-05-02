@@ -1,28 +1,73 @@
 @import 'tailwindcss';
 @import '@fontsource/fira-mono';
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
 
-:root {
-	/* Feel free to modify the colors to match */
-	--font-body:
-		Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-		'Open Sans', 'Helvetica Neue', sans-serif;
+
+@font-face {
+	font-family: 'LufgaRegular';
+	src: url('/fonts/LufgaRegular.woff') format('woff');
+	font-weight: 400;
+	font-display: swap;
+  }
+  
+  @font-face {
+	font-family: 'LufgaBold';
+	src: url('/fonts/LufgaBold.woff') format('woff');
+	font-weight: 700;
+	font-display: swap;
+  }
+  
+  @font-face {
+	font-family: 'Attena';
+	src: url('/fonts/Attena.otf') format('opentype');
+	font-weight: 400;
+	font-display: swap;
+  }
+  :root {
+	/* Typography */
+	--font-body: 'LufgaRegular', sans-serif;
+	--font-heading: 'LufgaBold', sans-serif;
+	--font-title: 'Attena', serif;
 	--font-mono: 'Fira Mono', monospace;
-	--color-bg-0: rgb(202, 216, 228);
-	--color-bg-1: hsl(209, 36%, 86%);
-	--color-bg-2: hsl(224, 44%, 95%);
-	--color-theme-1: #ff3e00;
-	--color-theme-2: #4075a6;
-	--color-text: rgba(0, 0, 0, 0.7);
+  
+	/* Core Colors (semantic roles) */
+	--secondary: #E2C275;
+	--primary: #2E231A;
+	--accent: #927659;
+	--background: #F8F5EE;
+  
+	--error: #C84A3D;
+	--success: #4D7C5A;
+  
+	--color-muted: rgba(46, 35, 26, 0.6);
+  }
+  
+  @theme inline {
+	--color-primary: 'var(--color-primary)';
+	--color-secondary: 'var(--color-secondary)';
+	--color-accent: 'var(--color-accent)';
+	--color-background: 'var(--color-background)';
+	--color-error: 'var(--color-error)';
+	--color-success: 'var(--color-success)';
+  }
+.font-title {
+	font-family: 'Attena', sans-serif;
+  }
+  
+.font-body {
+	font-family: 'LufgaRegular', sans-serif;
 }
 
+.font-heading {
+	font-family: 'LufgaBold', sans-serif;
+}
+
+
 a, p {
-	font-family: var(--font-mono);
+	font-family: var(--font-body);
 }
 
 h1 {
-	font-size: 2rem;
+	font-family: var(--font-title);
 }
 
 a:hover {
