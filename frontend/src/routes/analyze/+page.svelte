@@ -2,11 +2,11 @@
 	<div class="flex h-[100vh] w-full flex-col items-center justify-center p-8">
 		<p class="font-heading my-4 text-[2rem]">Classify News for Accuracy</p>
 		<main
-			class="z-3 col-2 flex h-full w-[80%] rounded-[2rem] border-1 border-[#927659] bg-[#8B7358]/5 shadow-xl backdrop-blur-lg"
+			class="border-c3 z-3 col-2 flex h-full w-[80%] rounded-[2rem] border-1 bg-[#8B7358]/5 shadow-xl backdrop-blur-lg"
 		>
 			<!-- Input Section -->
 			<section class="flex w-full flex-col rounded-lg p-6">
-				<h1 class="font-heading mb-4 self-center text-2xl text-[#2E231A]">Input News Article</h1>
+				<h1 class="font-heading text-primary mb-4 self-center text-2xl">Input News Article</h1>
 				<!-- Textarea for user input -->
 				<textarea
 					id="user-input"
@@ -72,9 +72,9 @@
 				</div>
 				<div class="bottom-0 flex items-center justify-end gap-2 self-end py-6">
 					<section class="font-heading">Status:</section>
-					<section class="h-3 w-3 rounded-full bg-[#C84A3D]"></section>
+					<section class="bg-error h-3 w-3 rounded-full"></section>
 					<section class="font-body">Likely Fake</section>
-					<section class="h-3 w-3 rounded-full bg-[#4D7C5A]"></section>
+					<section class="bg-sucess h-3 w-3 rounded-full"></section>
 					<section class="font-body">Likely Real</section>
 				</div>
 			</section>

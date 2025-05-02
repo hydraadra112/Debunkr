@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 @import '@fontsource/fira-mono';
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
 
 
 @font-face {
@@ -24,22 +22,33 @@
 	font-weight: 400;
 	font-display: swap;
   }
-:root {
-	/* Feel free to modify the colors to match */
-	--font-body: 'LufgaRegular', sans-serif; /* body font */
-	--font-heading: 'LufgaBold', sans-serif; /* heading font */
-	--font-title: 'Attena', serif; /* title font */
+  :root {
+	/* Typography */
+	--font-body: 'LufgaRegular', sans-serif;
+	--font-heading: 'LufgaBold', sans-serif;
+	--font-title: 'Attena', serif;
 	--font-mono: 'Fira Mono', monospace;
-	--color-c1: #E2C275; /* primary accent*/
-	--color-c2: #C5A262; /* secondary accent*/
-	--color-c2: #927659; /* neutral surface*/
-	--color-c3: #2E231A; /* text color*/
-	--color-c4: #F8F5EE; /* background color*/
-	--color-error: #C84A3D; /* error*/
-	--color-success: #4D7C5A; /* success*/
-	
-}
-
+  
+	/* Core Colors (semantic roles) */
+	--secondary: #E2C275;
+	--primary: #2E231A;
+	--accent: #927659;
+	--background: #F8F5EE;
+  
+	--error: #C84A3D;
+	--success: #4D7C5A;
+  
+	--color-muted: rgba(46, 35, 26, 0.6);
+  }
+  
+  @theme inline {
+	--color-primary: 'var(--color-primary)';
+	--color-secondary: 'var(--color-secondary)';
+	--color-accent: 'var(--color-accent)';
+	--color-background: 'var(--color-background)';
+	--color-error: 'var(--color-error)';
+	--color-success: 'var(--color-success)';
+  }
 .font-title {
 	font-family: 'Attena', sans-serif;
   }
