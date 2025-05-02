@@ -6,22 +6,28 @@
 
 @font-face {
 	font-family: 'LufgaRegular';
-	src: url('/fonts/LufgaRegular.woff') format('woff');
+	src: url('frontend/src/public/fonts/LufgaRegular.woff') format('woff');
 	font-weight: 400;
 	font-style: normal;
   }
   
   @font-face {
 	font-family: 'LufgaBold';
-	src: url('/fonts/LufgaBold.woff') format('woff');
+	src: url('/frontend/src/public/fonts/LufgaBold.woff') format('woff');
 	font-weight: 700;
 	font-style: normal;
   }
   
+  @font-face {
+	font-family: 'Attena';
+	src: url(/frontend/src//public/fonts/Attena.otf) format('opentype');
+	font-weight: 400;
+  }
 :root {
 	/* Feel free to modify the colors to match */
 	--font-body: 'LufgaRegular', sans-serif; /* body font */
-	--font-title: 'LufgaBold', sans-serif; /* title font */
+	--font-heading: 'LufgaBold', sans-serif; /* heading font */
+	--font-title: 'Attena', serif; /* title font */
 	--font-mono: 'Fira Mono', monospace;
 	--color-c1: #E2C275; /* primary accent*/
 	--color-c2: #C5A262; /* secondary accent*/
