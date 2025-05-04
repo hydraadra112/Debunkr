@@ -18,7 +18,7 @@
   
   @font-face {
 	font-family: 'Attena';
-	src: url('/fonts/Attena.otf') format('opentype');
+	src: url('/fonts/Attena.ttf') format('truetype');
 	font-weight: 400;
 	font-display: swap;
   }
@@ -40,15 +40,7 @@
   
 	--color-muted: rgba(46, 35, 26, 0.6);
   }
-  
-  @theme inline {
-	--color-primary: 'var(--color-primary)';
-	--color-secondary: 'var(--color-secondary)';
-	--color-accent: 'var(--color-accent)';
-	--color-background: 'var(--color-background)';
-	--color-error: 'var(--color-error)';
-	--color-success: 'var(--color-success)';
-  }
+
 .font-title {
 	font-family: 'Attena', sans-serif;
   }

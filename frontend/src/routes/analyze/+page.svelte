@@ -72,9 +72,9 @@
 				</div>
 				<div class="bottom-0 flex items-center justify-end gap-2 self-end py-6">
 					<section class="font-heading">Status:</section>
-					<section class="bg-error h-3 w-3 rounded-full"></section>
+					<section class="h-3 w-3 rounded-full bg-[#C84A3D]"></section>
 					<section class="font-body">Likely Fake</section>
-					<section class="bg-sucess h-3 w-3 rounded-full"></section>
+					<section class="h-3 w-3 rounded-full bg-[#4D7C5A]"></section>
 					<section class="font-body">Likely Real</section>
 				</div>
 			</section>
