@@ -2,18 +2,19 @@
 	// Your script logic (if needed) goes here
 </script>
 
+
 <footer class="footer font-body">
-	<div class="footer-content">
-		<img src="/debunkrlogo.png" alt="Debunkr Logo" class="footer-logo" />
+	<div class="flex justify-between items-start w-full max-w-[1200px] mr-40">
+		<img src="/debunkrlogo.png" alt="Debunkr Logo" class="size-[3rem] mt-[6px]" />
 		<div class="footer-text">
 			<span class="font-title text-[3rem] text-[#3d2c1f]">Debunkr</span>
-			<p class="footer-description">
+			<p class="font-sans text-base text-[#3d2c1f] font-body mt-8">
 				Debunkr equips you with tools to detect misinformation, promoting informed decision-making
 				and upholding democratic integrity.
 			</p>
-			<p class="footer-copyright">© 2025 Debunkr - All Rights Reserved</p>
+			<p class="font-body text-[1rem] mt-[8rem]">© 2025 Debunkr - All Rights Reserved</p>
 		</div>
-		<div class="footer-nav-container">
+		<div class="flex justify-center items-start w-full gap-12 mt-20 ml-56">
 			<nav class="footer-nav">
 				<p class="footer-nav-title">NAVIGATION</p>
 				<a href="/" class="footer-link">Home</a>
@@ -82,57 +83,10 @@
 		align-items: flex-start;
 	}
 
-	.footer-content {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-		width: 100%; /* Stretches the content across the width */
-		max-width: 1200px; /* Limit the maximum width for larger screens */
-		margin-right: 10rem;
-	}
-
-	.footer-logo {
-		width: 50px;
-		height: auto;
-		margin-top: 6px;
-	}
-
 	.footer-text {
 		display: flex;
 		flex-direction: column;
 		max-width: 50%; /* Adjust width for responsiveness */
-	}
-
-	.footer-title {
-		font-family: 'Attena';
-		color: #3d2c1f;
-		font-size: 40px;
-	}
-
-	.footer-description {
-		font-family: 'Lufga', sans-serif;
-		font-size: 16px;
-		color: #3d2c1f;
-		font-weight: 400;
-		margin-top: 2rem;
-	}
-
-	.footer-copyright {
-		font-family: 'Lufga', sans-serif;
-		font-size: 16px;
-		color: #3d2c1f;
-		margin-top: 8rem;
-	}
-
-	/* Responsive footer navigation */
-	.footer-nav-container {
-		display: flex;
-		justify-content: center; /* Center navigation horizontally */
-		align-items: flex-start;
-		width: 100%;
-		gap: 3rem; /* Space between sections */
-		margin-top: 5rem;
-		margin-left: 14rem;
 	}
 
 	.footer-nav {
@@ -142,7 +96,7 @@
 		align-items: flex-start;
 	}
 	.footer-nav-title {
-		font-family: 'Lufga';
+		font-family: var(--font-body);
 		font-size: 18px;
 		color: #3d2c1f;
 		font-weight: 600;
@@ -150,7 +104,7 @@
 	}
 
 	.footer-link {
-		font-family: 'Lufga';
+		font-family: var(--font-body);
 		font-size: 16px;
 		color: #3d2c1f;
 		text-decoration: none;
@@ -163,20 +117,9 @@
 
 	/* Media queries for responsiveness */
 	@media (max-width: 768px) {
-		.footer-content {
-			flex-direction: column;
-			align-items: center;
-			text-align: center; /* Center align text on smaller screens */
-		}
-
 		.footer-text {
 			max-width: 100%;
 			margin-bottom: 2rem;
-		}
-
-		.footer-nav-container {
-			justify-content: center;
-			gap: 1rem;
 		}
 
 		.footer-nav {
@@ -185,13 +128,6 @@
 	}
 
 	@media (max-width: 480px) {
-		.footer-title {
-			font-size: 32px;
-		}
-
-		.footer-description {
-			font-size: 14px;
-		}
 
 		.footer-link {
 			font-size: 14px;
