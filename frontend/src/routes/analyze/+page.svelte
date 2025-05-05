@@ -1,6 +1,6 @@
 <body class=" overflow-x-hidden">
 	<div class="flex h-[100vh] w-full flex-col items-center justify-center p-8">
-		<p class=" font-heading my-4 text-[2rem]">Classify News for Accuracy</p>
+		<p class=" font-heading my-4 text-[2rem] primary-color">Classify News for Accuracy</p>
 		<main
 			class="border-c3 z-3 col-2 flex h-full w-[80%] rounded-[2rem] border-1 bg-[#8B7358]/5 shadow-xl backdrop-blur-lg"
 		>
@@ -11,13 +11,13 @@
 				<textarea
 					id="user-input"
 					placeholder="Type or paste your news article here..."
-					class="font-body mb-4 h-full w-full resize-none rounded-lg border border-gray-300 p-4 text-[1rem] text-[#2E231A]/80"
+					class="font-body mb-4 h-full w-full resize-none rounded-lg border border-gray-300 p-4 text-[1rem] primary-color/80"
 				></textarea>
 				<div class="flex w-full items-center justify-between gap-4">
 					<!-- Upload Button -->
 					<button
 						id="upload-btn"
-						class="font-heading leading-wide flex cursor-pointer items-center justify-center rounded-full border-[0.1rem] border-[#2E231A] px-2 py-2 text-[1rem] text-[#2E231A] transition hover:bg-[#ffe9d6]"
+						class="font-heading leading-wide flex cursor-pointer items-center justify-center rounded-full border-[0.1rem] border-[#2E231A] px-2 py-2 text-[1rem] primary-color transition hover:bg-[#ffe9d6]"
 					>
 						<img
 							src="/ep_upload-filled.png"
@@ -32,7 +32,7 @@
 					<!-- Analyze Button -->
 					<button
 						id="analyze-btn"
-						class="font-heading leading-wide cursor-pointer rounded-full bg-[#2E231A] px-6 py-2 text-[1rem] text-[#F8F5EE] transition hover:bg-[#6e543f]"
+						class="font-heading leading-wide cursor-pointer rounded-full bg-primary-color px-6 py-2 text-[1rem] text-[#F8F5EE] transition hover:bg-[#6e543f]"
 					>
 						Analyze
 					</button>
@@ -44,27 +44,27 @@
 
 			<!-- Results Section -->
 			<section class="flex w-full flex-col rounded-lg px-6 pt-6">
-				<h1 class="font-heading mb-4 self-center text-2xl text-[#2E231A]">Analysis Result</h1>
+				<h1 class="font-heading mb-4 self-center text-2xl primary-color">Analysis Result</h1>
 				<div class="h-full space-y-6">
 					<div id="results-container">
-						<h3 class="font-body my-2 text-xl text-[#2E231A]">The News is Likely</h3>
+						<h3 class="font-body my-2 text-xl primary-color">The News is Likely</h3>
 						<div id="emotions-list" class="flex flex-wrap gap-3">
 							<!-- Answers will appear here -->
-							<p class="text-[#2E231A]/60 italic">Analysis Description</p>
+							<p class="desc-color italic">Analysis Description</p>
 						</div>
 					</div>
 					<div id="confidence-container">
-						<h3 class="font-body mb-2 text-xl text-[#2E231A]">Confidence Level</h3>
+						<h3 class="font-body mb-2 text-xl primary-color">Confidence Level</h3>
 						<div id="confidence-list" class="flex flex-wrap gap-3">
 							<!-- Answers will appear here -->
-							<p class="text-[#2E231A]/60 italic">Confidence Level Description</p>
+							<p class="desc-color italic">Confidence Level Description</p>
 						</div>
 					</div>
 					<div id="response-container">
-						<h3 class="font-body mb-2 text-xl text-[#2E231A]">Visualizations</h3>
-						<div id="visualizations-response" class="text-gray-600">
+						<h3 class="font-body mb-2 text-xl primary-color">Visualizations</h3>
+						<div id="visualizations-response">
 							<!-- Response will appear here -->
-							<p class="text-[#2E231A]/60 italic">
+							<p class="desc-color italic">
 								the Influential words and the graphs will be shown here
 							</p>
 						</div>
@@ -86,3 +86,17 @@
 		</div>
 	</div>
 </body>
+
+<style>
+	.primary-color {
+		color: var(--primary);
+	}
+
+	.desc-color {
+		color: #6B7280;
+	}
+
+	.bg-primary-color {
+		background-color: var(--primary);
+	}
+</style>
