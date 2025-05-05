@@ -13,26 +13,48 @@
 
 	<!-- Navigation Links -->
 	<nav class="flex gap-8 px-[5%] text-[1rem] font-medium">
-		<a href="/">HOME</a>
-		<a href="/analyze">ANALYZE</a>
-		<a href="/about" >ABOUT US</a>
+		<a href="/" class="nav-link">HOME</a>
+		<a href="/analyze" class="nav-link">ANALYZE</a>
+		<a href="/about" class="nav-link">ABOUT US</a>
 	</nav>
 </header>
 
 <style>
 	.logo {
-		width: 3rem; /* Adjust width as needed */
+		width: 3rem;
 		height: auto;
 	}
 
-	a {
+	.nav-link {
+		font-family: var(--font-body);
 		font-size: 16px;
 		color: #3d2c1f;
+		position: relative;
 		text-decoration: none;
-		transition: color 0.3s;
+		transition: color 0.3s ease;
 	}
 
-	a:hover {
-		color: var(--accent);
+	.nav-link:hover {
+		color: #927659;
+	}
+
+	.nav-link:active {
+		color: #927659;
+	}
+
+	.nav-link::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background-color: #927659;
+		transition: width 0.3s ease;
+	}
+
+	.nav-link:hover::after,
+	.nav-link:active::after {
+		width: 100%;
 	}
 </style>
