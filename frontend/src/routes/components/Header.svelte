@@ -13,9 +13,9 @@
 
 	<!-- Navigation Links -->
 	<nav class="flex gap-8 px-[5%] text-[1rem] font-medium">
-		<a href="/" class="transition hover:text-[#4EC3B9]">HOME</a>
-		<a href="/analyze" class="transition hover:text-[#4EC3B9]">ANALYZE</a>
-		<a href="/about" class="transition hover:text-[#4EC3B9]">ABOUT US</a>
+		<a href="/">HOME</a>
+		<a href="/analyze">ANALYZE</a>
+		<a href="/about" >ABOUT US</a>
 	</nav>
 </header>
 
@@ -23,5 +23,16 @@
 	.logo {
 		width: 3rem; /* Adjust width as needed */
 		height: auto;
+	}
+
+	a {
+		font-size: 16px;
+		color: #3d2c1f;
+		text-decoration: none;
+		transition: color 0.3s;
+	}
+
+	a:hover {
+		color: var(--accent);
 	}
 </style>
