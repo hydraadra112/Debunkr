@@ -38,7 +38,7 @@ def preprocess_text(txt: str, calamancy_model, tl_stopwords, join: bool=True):
 
     return tokens
 
-def load_stopwords(path: Path = "./stopwords-tl.txt"):
+def load_stopwords(path: Path = Path("./src/notebooks/stopwords-tl.txt")):
     """ Opens the tagalog stopwords file """
     with open(path, "r", encoding="utf-8") as f:
         return [line.strip() for line in f.readlines()]
