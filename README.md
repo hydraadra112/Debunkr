@@ -1,31 +1,33 @@
 # **Debunkr**
 
-## Description
+## **Description**
+A Filipino fake news classifier, created using Python machine learning libraries and SvelteKit with LIME.  
+This is a final project for our **CCS 249 - Natural Language Processing** course.  
 
-A Filipino fake news classifier, created using Python machine learning libraries, and SvelteKit with LIME.
+## **Overview**
+**Debunkr** is designed to identify and classify fake news in the Filipino context.  
+It leverages machine learning algorithms in Python for back-end processing and SvelteKit for a modern, user-friendly interface.  
+The project also incorporates **LIME (Local Interpretable Model-agnostic Explanations)** to make the classification process more transparent and understandable.  
 
-This is a final project for our CCS 249 - Natural Language Processing course.
+## **Setup**
+To properly set up this project, follow the setup instructions for both the frontend and backend components.  
 
-## Setup
-To properly setup this project, follow the setup instructions in `./frontend/` and `./backend/`.
+### **Frontend Setup**
+1. Navigate to the `./frontend/` directory.  
+2. Start the development server:  
+   ```bash
+   cd ./frontend  
+   npm run dev -- --open  
+   cd ..  # Return to the root directory
 
-If done, simply run activate the backend, and run the frontend development server locally.
-
-```bash
-# run the frontend dev server locally by
-> cd .\frontend
-> npm run dev -- --open
-> cd .. # get out of the frontend dir
-
-# backend activation
 # not recommended to turn on if you're
-# doing only front end
+# doing only front-end
 > cd .\backend
 > uvicorn main:app --reload --port 8000
 ```
 By following these instructions, we ensure the activation of frontend and backend, enabling them to work together.
 
-## Creators
+## Creators BSCS 3-A AI
 - [John Manuel Carado](https://github.com/hydraadra112)
 - [Cherilyn Marie Deocampo](https://github.com/chiichann)
 - [Mark Andrei Encanto](https://github.com/Markndrei)
