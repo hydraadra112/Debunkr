@@ -1,7 +1,37 @@
-<body class=" overflow-x-hidden">
+<script lang="ts">
+	import {TextLinkPredict} from '$lib/api';
+	/* SEND DATA TO BACKEND AND GET PREDS */
+	type input = {
+		text: string;
+	};
+
+	type response = {
+		result: string;
+		scores: Record<string, number>;
+	};
+
+	let inputText = '';
+	let prediction = '';
+	let wordScores: Record<string, number> = {};
+
+	async function TextLinkPrediction() {
+		try {
+			const payload: input = { text: inputText };
+			const res = await TextLinkPredict<response, input>('/api/predict-text-link', payload);
+			prediction = res.result;
+			wordScores = res.scores;
+		} catch (err) {
+			console.error(err);
+			alert("Failed to get prediction.");
+		}
+	}
+	/* END */
+</script>
+
+<div class=" overflow-x-hidden">
 	<div class="flex h-[100vh] w-full flex-col items-center justify-center p-8">
 		<p class=" font-heading my-4 text-[2rem] primary-color">Classify News for Accuracy</p>
-		<main
+		<div
 			class="border-c3 z-3 col-2 flex h-full w-[80%] rounded-[2rem] border-1 bg-[#8B7358]/5 shadow-xl backdrop-blur-lg"
 		>
 			<!-- Input Section -->
@@ -9,6 +39,7 @@
 				<h1 class="font-heading text-primary mb-4 self-center text-2xl">Input News Article</h1>
 				<!-- Textarea for user input -->
 				<textarea
+					bind:value={inputText}
 					id="user-input"
 					placeholder="Type or paste your news article here..."
 					class="font-body mb-4 h-full w-full resize-none rounded-lg border border-gray-300 p-4 text-[1rem] primary-color/80"
@@ -31,6 +62,7 @@
 
 					<!-- Analyze Button -->
 					<button
+						on:click={TextLinkPrediction}
 						id="analyze-btn"
 						class="font-heading leading-wide cursor-pointer rounded-full bg-primary-color px-6 py-2 text-[1rem] text-[#F8F5EE] transition hover:bg-[#6e543f]"
 					>
@@ -47,7 +79,13 @@
 				<h1 class="font-heading mb-4 self-center text-2xl primary-color">Analysis Result</h1>
 				<div class="h-full space-y-6">
 					<div id="results-container">
-						<h3 class="font-body my-2 text-xl primary-color">The News is Likely</h3>
+
+						{#if prediction}
+							<h3 class="font-body my-2 text-xl primary-color">The News is Likely {prediction}</h3>
+						{:else}
+							<h3 class="font-body my-2 text-xl primary-color">The News is Likely ???</h3>
+						{/if}
+
 						<div id="emotions-list" class="flex flex-wrap gap-3">
 							<!-- Answers will appear here -->
 							<p class="desc-color italic">Analysis Description</p>
@@ -61,13 +99,23 @@
 						</div>
 					</div>
 					<div id="response-container">
+
+
 						<h3 class="font-body mb-2 text-xl primary-color">Visualizations</h3>
 						<div id="visualizations-response">
 							<!-- Response will appear here -->
-							<p class="desc-color italic">
-								the Influential words and the graphs will be shown here
-							</p>
+							 {#if Object.keys(wordScores).length > 0}
+								{#each Object.entries(wordScores) as [word, score]}
+									<li><strong>{word}</strong>: {score}</li>
+								{/each}
+							{:else}
+								<p class="desc-color italic">
+									the Influential words and the graphs will be shown here
+								</p>
+							{/if}
 						</div>
+
+
 					</div>
 				</div>
 				<div class="bottom-0 flex items-center justify-end gap-2 self-end py-6">
@@ -78,14 +126,14 @@
 					<section class="font-body">Likely Real</section>
 				</div>
 			</section>
-		</main>
+		</div>
 		<div class="mt-2 ml-[22%] flex w-full justify-start">
 			<div class="font-body mt-2 text-[1rem] text-[#2E231A]/60 underline">
 				When uploading files, ensure that the file size is 25 megabytes (MB) or less.
 			</div>
 		</div>
 	</div>
-</body>
+</div>
 
 <style>
 	.primary-color {

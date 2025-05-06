@@ -1,6 +1,7 @@
 from pathlib import Path
 from nltk.tokenize import word_tokenize
-import string 
+import string
+
 def preprocess_text(txt: str, calamancy_model, tl_stopwords, join: bool=True):
     """
     Preprocesses input text by converting it to lowercase,
