@@ -1,6 +1,26 @@
 from pathlib import Path
 from nltk.tokenize import word_tokenize
 import string 
+
+import trafilatura
+import re
+
+def parse_and_clean_link(url: str) -> str:
+    downloaded = trafilatura.fetch_url(url)
+    if not downloaded:
+        return ""
+
+    result = trafilatura.extract(downloaded, output_format='txt')
+    if not result:
+        return ""
+
+    # Clean text: remove non-alphanumeric characters (except apostrophes), normalize whitespace
+    cleaned_text = re.sub(r"[^\w\s']", ' ', result)
+    cleaned_text = re.sub(r'[\t\n\r\f\v]', ' ', cleaned_text)
+    cleaned_text = re.sub(r'\s+', ' ', cleaned_text)
+    return cleaned_text.strip()
+
+
 def preprocess_text(txt: str, calamancy_model, tl_stopwords, join: bool=True):
     """
     Preprocesses input text by converting it to lowercase,
