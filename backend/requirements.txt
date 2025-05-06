@@ -5,6 +5,7 @@ calamanCy==0.2.2
 lime==0.2.0.1
 trafilatura==2.0.0
 lxml_html_clean==0.4.2
+asyncio==3.4.3
 pymupdf==1.25.5
 nltk==3.9.1
 wget==3.2

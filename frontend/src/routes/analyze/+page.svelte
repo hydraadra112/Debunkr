@@ -7,16 +7,19 @@
 
 	type response = {
 		result: string;
+		scores: Record<string, number>;
 	};
 
 	let inputText = '';
 	let prediction = '';
+	let wordScores: Record<string, number> = {};
 
 	async function TextLinkPrediction() {
 		try {
 			const payload: input = { text: inputText };
 			const res = await TextLinkPredict<response, input>('/api/predict-text-link', payload);
 			prediction = res.result;
+			wordScores = res.scores;
 		} catch (err) {
 			console.error(err);
 			alert("Failed to get prediction.");
@@ -76,11 +79,13 @@
 				<h1 class="font-heading mb-4 self-center text-2xl primary-color">Analysis Result</h1>
 				<div class="h-full space-y-6">
 					<div id="results-container">
+
 						{#if prediction}
 							<h3 class="font-body my-2 text-xl primary-color">The News is Likely {prediction}</h3>
 						{:else}
 							<h3 class="font-body my-2 text-xl primary-color">The News is Likely ???</h3>
 						{/if}
+
 						<div id="emotions-list" class="flex flex-wrap gap-3">
 							<!-- Answers will appear here -->
 							<p class="desc-color italic">Analysis Description</p>
@@ -94,13 +99,23 @@
 						</div>
 					</div>
 					<div id="response-container">
+
+
 						<h3 class="font-body mb-2 text-xl primary-color">Visualizations</h3>
 						<div id="visualizations-response">
 							<!-- Response will appear here -->
-							<p class="desc-color italic">
-								the Influential words and the graphs will be shown here
-							</p>
+							 {#if Object.keys(wordScores).length > 0}
+								{#each Object.entries(wordScores) as [word, score]}
+									<li><strong>{word}</strong>: {score}</li>
+								{/each}
+							{:else}
+								<p class="desc-color italic">
+									the Influential words and the graphs will be shown here
+								</p>
+							{/if}
 						</div>
+
+
 					</div>
 				</div>
 				<div class="bottom-0 flex items-center justify-end gap-2 self-end py-6">
