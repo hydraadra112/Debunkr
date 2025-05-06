@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from joblib import load
 from src.preprocessors import load_stopwords
@@ -24,3 +24,11 @@ def load_model():
 @app.get("/api/hello")
 async def hello():
     return {"message": "I'm from the backend! Yay! Frontend and backend is connected!"}
+
+@app.post("/api/predict-text-link")
+async def predict(request: Request):
+    data = await request.json()
+    input_text = data.get("text", "")
+
+    prediction = "Positive" if "good" in input_text.lower() else "Negative"
+    return {"result": prediction}
