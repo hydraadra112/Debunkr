@@ -1,35 +1,76 @@
-# **Debunkr**
+<p align="center">
+  <table>
+    <tr>
+      <td align="right">
+        <img src="frontend/static/debunkrlogo.png" alt="Debunkr Logo" width="100"/>
+      </td>
+      <td align="left">
+        <h1><strong>DEBUNKR</strong></h1>
+      </td>
+    </tr>
+  </table>
+</p>
 
-## **Description**
-A Filipino fake news classifier, created using Python machine learning libraries and SvelteKit with LIME.  
-This is a final project for our **CCS 249 - Natural Language Processing** course.  
+<p align="center">
+  <em>A Filipino fake news classifier built with Python, and SvelteKit — powered by LIME for interpretability.</em>
+</p>
 
-## **Overview**
-**Debunkr** is designed to identify and classify fake news in the Filipino context.  
-It leverages machine learning algorithms in Python for back-end processing and SvelteKit for a modern, user-friendly interface.  
-The project also incorporates **LIME (Local Interpretable Model-agnostic Explanations)** to make the classification process more transparent and understandable.  
+## 🎯 Purpose
 
-## **Setup**
-To properly set up this project, follow the setup instructions for both the frontend and backend components.  
+**DEBUNKR** addresses the urgent problem of fake news in the Philippines, especially in the lead-up to the May 2025 midterm elections. A Pulse Asia survey reports that 86% of Filipinos view fake news as a major issue, with 90% encountering political misinformation—primarily via social media and TV. Compounding the problem, 65% find it difficult to distinguish truth from falsehood, and 55% report frequent exposure to disinformation. The rise of AI-generated content (e.g., deepfakes) further complicates the landscape.
 
-### **Frontend Setup**
-1. Navigate to the `./frontend/` directory.  
-2. Start the development server:  
-   ```bash
-   cd ./frontend  
-   npm run dev -- --open  
-   cd ..  # Return to the root directory
+To combat this, we developed a Tagalog fake news classifier to empower users with a tool that helps verify information and improve digital literacy. The backend leverages Python and multiple NLP libraries for model training, while the frontend is built using SvelteKit and TailwindCSS for optimized, scalable, and modular UI development.
 
-# not recommended to turn on if you're
-# doing only front-end
-> cd .\backend
-> uvicorn main:app --reload --port 8000
+---
+
+
+## 🧠 Overview
+
+**DEBUNKR** is a fake news detection web application focused on Filipino news content. It utilizes:
+- Filipino/Tagalog [dataset](https://huggingface.co/datasets/jcblaise/fake_news_filipino) to train the models
+- A modern SvelteKit frontend
+- [LIME (Local Interpretable Model-Agnostic Explanations)](https://github.com/marcotcr/lime) for transparency and model interpretability
+- [Trafilatura](https://github.com/adbar/trafilatura) for web-scraping of suspicious news content
+
+This is a final project for our **CCS 249 - Natural Language Processing** course.
+
+---
+
+## ⚙️ Setup Instructions
+
+To set up the project locally, follow the instructions below for both the frontend and backend components:
+
+### 🔧 Setup
+
+```bash
+# Navigate to the frontend directory
+cd frontend
+
+# Install dependencies
+npm install
+
+# Run the dev server
+npm run dev -- --open
+
+# Open a new terminal
+
+# Navigate to the backend directory
+cd backend
+
+# Install required Python packages (Setup venv first)
+pip install -r requirements.txt
+
+# Run the FastAPI server
+uvicorn main:app --reload --port 8000
 ```
-By following these instructions, we ensure the activation of frontend and backend, enabling them to work together.
 
-## Creators BSCS 3-A AI
-- [John Manuel Carado](https://github.com/hydraadra112)
-- [Cherilyn Marie Deocampo](https://github.com/chiichann)
-- [Mark Andrei Encanto](https://github.com/Markndrei)
-- [Chariz Dianne Falco](https://github.com/chariz1101)
-- [Jephone Israel Jireh S. Torre](https://github.com/JephoneTorre)
+<div align="center">
+
+## 👥 Creators
+[John Manuel Carado](https://github.com/hydraadra112)  
+[Cherilyn Marie Deocampo](https://github.com/chiichann)  
+[Mark Andrei Encanto](https://github.com/Markndrei)  
+[Chariz Dianne Falco](https://github.com/chariz1101)  
+[Jephone Israel Jireh S. Torre](https://github.com/JephoneTorre)  
+</div>
+
