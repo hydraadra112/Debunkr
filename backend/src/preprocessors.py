@@ -1,6 +1,8 @@
 from pathlib import Path
 from nltk.tokenize import word_tokenize
 import string
+import nltk
+nltk.download('punkt_tab')
 
 def preprocess_text(txt: str, calamancy_model, tl_stopwords, join: bool=True):
     """
