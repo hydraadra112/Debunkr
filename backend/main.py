@@ -5,6 +5,10 @@ import asyncio
 from src import preprocessors, parsers, LIME
 import calamancy # load in states in future due to slow loading time
 
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
+
 app = FastAPI()
 
 # Allow SvelteKit to make API calls
@@ -68,7 +72,7 @@ async def predict(request: Request):
     verdict = "Unknown Type"
     if pred == 1:
         verdict = "Fake News"
-    elif pred == 2:
+    elif pred == 0:
         verdict = "Real News"
     
     return {
