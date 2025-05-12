@@ -70,10 +70,10 @@ async def predict(request: Request):
     word_scores, pred = await asyncio.gather(run_task1(), run_task2())
 
     verdict = "Unknown Type"
-    if pred == 1:
-        verdict = "Fake News"
-    elif pred == 0:
+    if pred == 0:
         verdict = "Real News"
+    elif pred == 1:
+        verdict = "Fake News"
     
     return {
         "result": verdict,
