@@ -91,24 +91,32 @@
 					<h1 class="font-heading primary-color mb-4 self-center text-2xl">Analysis Result</h1>
 
 					<div class="h-full space-y-6">
-						<div id="results-container">
-							<h3 class="font-body primary-color my-2 text-xl">The News is Likely {prediction}</h3>
+						{#if prediction === "Real News"}
+							<div id="results-container">
+								<h3 class="font-body my-2 text-xl real-news font-bold">The News is Real News</h3>
 
-							<div id="emotions-list" class="flex flex-wrap gap-3">
+								<div id="emotions-list" class="flex flex-wrap gap-3">
 								<!-- Answers will appear here -->
-								<p class="desc-color italic">Analysis Description</p>
+								<p class="desc-color italic">This content appears to be factual and credible, based on the model's analysis.</p>
+								</div>
 							</div>
-						</div>
+						{:else if prediction === "Fake News"}
+							<div id="results-container">
+								<h3 class="font-body my-2 text-xl fake-news font-bold">The News is Fake News</h3>
 
-						<div id="confidence-container">
-							<h3 class="font-body primary-color mb-2 text-xl">Confidence Level</h3>
-							<div id="confidence-list" class="flex flex-wrap gap-3">
-								<p class="desc-color italic">Confidence Level Description</p>
+								<div id="emotions-list" class="flex flex-wrap gap-3">
+								<!-- Answers will appear here -->
+								<p class="desc-color italic">This content is likely misleading or false, based on the model’s evaluation.</p>
+								</div>
 							</div>
+						{/if}
+						
+						<div id="confidence-container">
+							<h3 class="font-body primary-color mb-2 text-xl font-bold">Confidence Level: 69%</h3>
 						</div>
 
 						<div id="response-container">
-							<h3 class="font-body primary-color mb-2 text-xl">Influential Words</h3>
+							<h3 class="font-body primary-color mb-2 text-xl font-bold">Influential Words</h3>
 
 							<div class="flex gap-4">
 								<!-- Word list -->
@@ -116,7 +124,7 @@
 									{#if Object.keys(wordScores).length > 0}
 										<ul class="list-disc pl-5">
 											{#each Object.entries(wordScores) as [word, score]}
-												<li>
+												<li class="font-body">
 													<strong style="color: {score >= 0 ? '#4D7C5A' : '#C84A3D'}">
 														{word}
 													</strong>
@@ -168,4 +176,12 @@
 	.bg-primary-color {
 		background-color: var(--primary);
 	}
+	.real-news {
+    color: #4D7C5A;
+  }
+
+  .fake-news {
+    color: #C84A3D;
+  }
+
 </style>
