@@ -5,6 +5,10 @@ import asyncio
 from src import preprocessors, parsers, LIME
 import calamancy # load in states in future due to slow loading time
 
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
+
 app = FastAPI()
 
 # Allow SvelteKit to make API calls
