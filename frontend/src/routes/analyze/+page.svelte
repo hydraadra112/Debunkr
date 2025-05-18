@@ -10,10 +10,12 @@
 	type response = {
 		result: string;
 		scores: Record<string, number>;
+		prob: number;
 	};
 
 	let inputText = '';
 	let prediction = '';
+	let conf_score = 0;
 	let wordScores: Record<string, number> = {};
 
 	export async function TextLinkPrediction() {
@@ -23,6 +25,7 @@
 
 			prediction = res.result;
 			wordScores = res.scores;
+			conf_score = res.prob;
 
 			await tick();
 
@@ -112,7 +115,7 @@
 						{/if}
 						
 						<div id="confidence-container">
-							<h3 class="font-body primary-color mb-2 text-xl font-bold">Confidence Level: 69%</h3>
+							<h3 class="font-body primary-color mb-2 text-xl font-bold">Confidence Level: {conf_score}%</h3>
 						</div>
 
 						<div id="response-container">

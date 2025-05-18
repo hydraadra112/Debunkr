@@ -78,7 +78,7 @@ async def predict(request: Request):
         return app.state.model.predict(tfidf)[0]
 
     # Run both tasks concurrently
-    word_scores, pred = await asyncio.gather(run_task1(), run_task2())
+    (word_scores, prob), pred = await asyncio.gather(run_task1(), run_task2())
 
     verdict = "Unknown Type"
     if pred == 0:
@@ -88,6 +88,7 @@ async def predict(request: Request):
     
     return {
         "result": verdict,
-        "scores": word_scores
+        "scores": word_scores,
+        "prob": prob
     }
 
