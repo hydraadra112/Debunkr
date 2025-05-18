@@ -9,7 +9,7 @@ class LIMEInterpreter:
 
     def explain(self, text, num_features=10):
         """
-        Generate LIME explanation and return a dict of word:score
+        Generate LIME explanation and return a dict of word:score AND the probability of class pred
         """
         explanation = self.explainer.explain_instance(
             text_instance=text,
@@ -20,7 +20,8 @@ class LIMEInterpreter:
         
         # Convert to dict
         word_scores = {str(word): round(score, 5) for word, score in explanation.as_list()}
-        return word_scores
+        return word_scores, round(explanation.predict_proba.max() * 100, 2)
+    
 
     # Visualize function to only download LIME but optional for now
     # Only apply it if we have more time
