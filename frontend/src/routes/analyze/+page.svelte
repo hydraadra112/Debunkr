@@ -128,7 +128,7 @@
 										<ul class="list-disc pl-5">
 											{#each Object.entries(wordScores) as [word, score]}
 												<li class="font-body">
-													<strong style="color: {score >= 0 ? '#4D7C5A' : '#C84A3D'}">
+													<strong style="color: {score >= 0 ? '#C84A3D' : '#4D7C5A'}">
 														{word}
 													</strong>
 												</li>
