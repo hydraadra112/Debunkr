@@ -55,3 +55,17 @@ def load_stopwords(path: Path = Path("./src/notebooks/stopwords-tl.txt")):
     """ Opens the tagalog stopwords file """
     with open(path, "r", encoding="utf-8") as f:
         return [line.strip() for line in f.readlines()]
+
+from PyPDF2 import PdfReader
+from io import BytesIO
+
+def extract_text_from_pdf(pdf_bytes: bytes) -> str:
+    try:
+        pdf_file = BytesIO(pdf_bytes)
+        reader = PdfReader(pdf_file)
+        text = ""
+        for page in reader.pages:
+            text += page.extract_text() or ""
+        return text
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"PDF processing error: {str(e)}")

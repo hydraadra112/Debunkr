@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { TextLinkPredict } from '$lib/api';
+	import { TextLinkPredict, predictPDF } from '$lib/api';
 	import { renderChart } from '$lib/chart';
 	import { tick } from 'svelte';
 
@@ -18,6 +18,7 @@
 	let conf_score = 0;
 	let wordScores: Record<string, number> = {};
 
+	// text link handler
 	export async function TextLinkPrediction() {
 		try {
 			const payload: input = { text: inputText };
@@ -35,6 +36,26 @@
 			alert('Failed to get prediction.');
 		}
 	}
+
+	// PDF handler
+    async function handlePDFUpload(event: Event) {
+        const input = event.target as HTMLInputElement;
+        const file = input.files?.[0];
+        if (!file) return;
+
+        try {
+            const res = await predictPDF<response>('/api/predict-pdf', file);
+            prediction = res.result;
+            wordScores = res.scores;
+            conf_score = res.prob;
+            
+            await tick();
+            renderChart(wordScores);
+        } catch (error) {
+            console.error('Upload failed:', error);
+            alert('Failed to process PDF');
+        }
+    }
 </script>
 
 <div>
@@ -55,10 +76,14 @@
 				></textarea>
 				<div class="flex w-full items-center justify-between gap-4">
 					<!-- Upload Button -->
-					<button
-						id="upload-btn"
-						class="font-heading leading-wide primary-color flex cursor-pointer items-center justify-center rounded-full border-[0.1rem] border-[#2E231A] px-2 py-2 text-[1rem] transition hover:bg-[#ffe9d6]"
-					>
+					<label for="pdf-upload" class="font-heading leading-wide primary-color flex cursor-pointer items-center justify-center rounded-full border-[0.1rem] border-[#2E231A] px-2 py-2 text-[1rem] transition hover:bg-[#ffe9d6]">
+						<input
+							type="file"
+							id="pdf-upload"
+							accept="application/pdf"
+							hidden
+							on:change={handlePDFUpload}
+						/>
 						<img
 							src="/ep_upload-filled.png"
 							alt="Upload Icon"
@@ -67,7 +92,7 @@
 							height="20"
 						/>
 						Upload Document
-					</button>
+					</label>
 
 					<!-- Analyze Button -->
 					<button

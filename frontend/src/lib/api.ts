@@ -26,3 +26,16 @@ export async function TextLinkPredict<T, U>(path: string, data: U): Promise<T> {
 	if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
 	return res.json();
 }
+
+// src/lib/api.ts
+export async function predictPDF<T>(path: string, file: File): Promise<T> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const res = await fetch(`${BASE_URL}${path}`, {
+        method: 'POST',
+        body: formData
+    });
+    if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
+    return res.json();
+}

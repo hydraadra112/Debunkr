@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from joblib import load
 import nltk
@@ -45,8 +45,6 @@ async def load_dependencies():
 async def hello():
     return {"message": "I'm from the backend! Yay! Frontend and backend is connected!"}
 
-import asyncio
-
 @app.post("/api/predict-text-link")
 async def predict(request: Request):
     data = await request.json()
@@ -85,6 +83,44 @@ async def predict(request: Request):
         verdict = "Real News"
     elif pred == 1:
         verdict = "Fake News"
+    
+    return {
+        "result": verdict,
+        "scores": word_scores,
+        "prob": prob
+    }
+
+@app.post("/api/predict-pdf")
+async def predict_pdf(file: UploadFile = File(...)):
+    # Read PDF content
+    pdf_bytes = await file.read()
+    
+    # Extract text
+    text = preprocessors.extract_text_from_pdf(pdf_bytes)
+    if not text:
+        raise HTTPException(status_code=400, detail="No text found in PDF")
+
+    # Preprocess text
+    preprocessed = preprocessors.preprocess_text(
+        text,
+        app.state.calamancy,
+        app.state.stopwords,
+        join=True
+    )
+
+    # Run prediction (same as text endpoint)
+    async def run_task1():
+        return await asyncio.to_thread(app.state.interpreter.explain, preprocessed, num_features=10)
+
+    async def run_task2():
+        def predict_label(text):
+            tfidf = app.state.vectorizer.transform([text])
+            return app.state.model.predict(tfidf)[0]
+        return await asyncio.to_thread(predict_label, preprocessed)
+
+    (word_scores, prob), pred = await asyncio.gather(run_task1(), run_task2())
+
+    verdict = "Real News" if pred == 0 else "Fake News"
     
     return {
         "result": verdict,
