@@ -14,7 +14,8 @@ class LIMEInterpreter:
         explanation = self.explainer.explain_instance(
             text_instance=text,
             classifier_fn=self.pipeline.predict_proba,
-            num_features=num_features
+            num_features=num_features,
+            num_samples=1000
         )
         
         # Convert to dict

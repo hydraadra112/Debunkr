@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from joblib import load
+import nltk
 import asyncio
 from src import preprocessors, parsers, LIME
 import calamancy # load in states in future due to slow loading time
@@ -22,10 +23,23 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def load_dependencies():
-    app.state.model = load("./src/notebooks/serialized/models/RandomForestClassifier.pkl") # temporarily using RF
-    app.state.calamancy = calamancy.load("tl_calamancy_md-0.2.0")
+    app.state.model = load("./src/notebooks/serialized/models/EnsembleSoftVoting.pkl")
+    app.state.model.n_jobs = -1
+    app.state.calamancy = calamancy.load("tl_calamancy_md-0.2.0", disable=["tagger", "parser", "ner"])
+    
+    nltk.download('punkt')
+    nltk.download('stopwords')
+    nltk.download('wordnet')
+    
     app.state.stopwords = preprocessors.load_stopwords()
     app.state.vectorizer = load("./src/notebooks/serialized/tfidf-vectorizer.pkl")
+    
+    # init lime
+    app.state.interpreter = LIME.LIMEInterpreter(
+        app.state.vectorizer,
+        app.state.model,
+        class_names=["Real News", "Fake News"]
+    )
 
 @app.get("/api/hello")
 async def hello():
@@ -48,18 +62,15 @@ async def predict(request: Request):
         app.state.stopwords,
         join=True
     )
-    
-    interpreter = LIME.LIMEInterpreter(
-        app.state.vectorizer,
-        app.state.model,
-        class_names=["Real News", "Fake News"]
-    )
+    print("Done text Preprocessing")
 
     # Define tasks for parallelism
     async def run_task1():
-        return await asyncio.to_thread(interpreter.explain, preprocessed, num_features=10)
+        print("getting explainations...")
+        return await asyncio.to_thread(app.state.interpreter.explain, preprocessed, num_features=10)
 
     async def run_task2():
+        print("predicting text...")
         return await asyncio.to_thread(predict_label, preprocessed)
 
     def predict_label(text):

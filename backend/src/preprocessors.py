@@ -1,45 +1,55 @@
-from pathlib import Path
-from nltk.tokenize import word_tokenize
-import string
 import nltk
-nltk.download('punkt_tab')
+from pathlib import Path
+import string
+import string
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
 
 def preprocess_text(txt: str, calamancy_model, tl_stopwords, join: bool=True):
     """
     Preprocesses input text by converting it to lowercase,
-    removing punctuation, tagalog stopword removal, and tagalog lemmatization
-    
-    Args:
-        txt (str): The string input to preprocess
-        calamancy_model: calamanCy model to perform tagalog lemmatization
-        tl_stopwords: A list of tagalog stopwords for stopword removal
-        join (bool): return joined tokens
-    """
+    removing punctuation, applying Tagalog & English stopword removal,
+    and performing Tagalog & English lemmatization.
 
-    # convert text to lowercase
+    Args:
+        txt (str): Input text
+        calamancy_model: calamanCy model for Tagalog lemmatization
+        tl_stopwords (list): Tagalog stopword list
+        join (bool): Whether to return a joined string or list of tokens
+    """
+    # Initialize English tools
+    en_stopwords = set(stopwords.words('english'))
+    lemmatizer = WordNetLemmatizer()
+
+    # Step 1: Lowercase
     lower_text = txt.lower()
 
-    # remove punctuation
+    # Step 2: Remove punctuation
     no_punc = lower_text.translate(str.maketrans('', '', string.punctuation))
 
-    # tokenize
+    # Step 3: Tokenize
     tokenized = word_tokenize(no_punc)
 
-    # remove stopwords
-    tokens_no_stopword = [token for token in tokenized if token not in tl_stopwords]
+    # Step 4: Remove Tagalog and English stopwords
+    tokens_no_stop = [
+        token for token in tokenized
+        if token not in tl_stopwords and token not in en_stopwords
+    ]
 
-    # join for NLP model
-    res = ' '.join(tokens_no_stopword)
+    # Step 5: Lemmatize with calamancy (Tagalog)
+    calamancy_doc = calamancy_model(' '.join(tokens_no_stop))
+    calamancy_lemmas = [token.lemma_ for token in calamancy_doc]
 
-    # lemmatization using calamancy_model
-    doc = calamancy_model(res)
-    tokens = [token.lemma_ for token in doc]
-    
+    # Step 6: Lemmatize again with English lemmatizer (handles English tokens better)
+    final_tokens = [lemmatizer.lemmatize(token) for token in calamancy_lemmas]
+
+    # Step 7: Return
     if join:
-        preprocessed = ' '.join(tokens)
-        return preprocessed
-
-    return tokens
+        return ' '.join(final_tokens)
+    else:
+        return final_tokens
 
 def load_stopwords(path: Path = Path("./src/notebooks/stopwords-tl.txt")):
     """ Opens the tagalog stopwords file """
