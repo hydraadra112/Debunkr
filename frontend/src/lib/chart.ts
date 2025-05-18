@@ -11,7 +11,7 @@ let chart: Chart | null = null;
 		for (const [word, score] of Object.entries(scores)) {
 			labels.push(word);
 			data.push(score);
-			backgroundColors.push(score > 0 ? '#4D7C5A' : '#C84A3D'); // Red = Fake, Green = Real
+			backgroundColors.push(score > 0 ? '#C84A3D' : '#4D7C5A'); // Red = Fake, Green = Real
 		}
 
 		if (chart) {
