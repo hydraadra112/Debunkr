@@ -12,10 +12,10 @@ To combat this, we developed a Filipino fake news classifier to empower users wi
 
 ---
 
-
 ## 🧠 Overview
 
 **DEBUNKR** is a fake news detection web application focused on Filipino news content. It utilizes:
+
 - Two datasets; one utilizing the [Tagalog language](https://huggingface.co/datasets/jcblaise/fake_news_filipino), and one in [English](https://github.com/aaroncarlfernandez/Philippine-Fake-News-Corpus) but is based in Filipino events.
 - Ensemble learning with multiple ML algorithms
 - A modern SvelteKit frontend
@@ -27,13 +27,14 @@ This is a final project for our **CCS 249 - Natural Language Processing** course
 ---
 
 ## 📊 Model Results
-The classifier used in the web application is an ensemble learning technique, utilizing for high performing ML algorithms. Specifically, we utilized *Logistic Regression*, *Multinomial NB*, *Random Forests Classifier*, *SGDC*.
+
+The classifier used in the web application is an ensemble learning technique, utilizing for high performing ML algorithms. Specifically, we utilized _Logistic Regression_, _Multinomial NB_, _Random Forests Classifier_, _SGDC_.
 
 These algorithms were evaluated using the following metrics: Accuracy, Precision, Recall, and F-1 Score.
 
 <img src="backend\src\notebooks\figures\model_eval.png" alt="Model Results"/>
 
-Combined in the ensemble with soft voting hyperparameter **on**, it achieved a 93% accuracy. See `model_dev.ipynb` notebook for more details. 
+Combined in the ensemble with soft voting hyperparameter **on**, it achieved a 93% accuracy. See `model_dev.ipynb` notebook for more details.
 
 ---
 
@@ -43,7 +44,28 @@ To set up the project locally, follow the instructions below for both the fronte
 
 ### 🔧 Setup
 
+Install UV system-wide
+
 ```bash
+# For windows users
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# For Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install required python version
+uv python install 3.11.1
+
+# To verify if correct python version is installed, run:
+uv python list
+```
+
+Navigate to the desired directory, then:
+
+```bash
+# Clone the project
+git clone https://github.com/hydraadra112/Debunkr.git
+
 # Navigate to the frontend directory
 cd frontend
 
@@ -58,19 +80,21 @@ npm run dev -- --open
 # Navigate to the backend directory
 cd backend
 
-# Optional but recommended
-# Creates virtual environment
-python -m venv .venv
-.venv\Scripts\activate
+# Create a virtual environment with Python 3.11.1
+uv venv --python 3.11.1
 
-# Install required Python packages
-pip install -r requirements.txt
+# Install all dependencies
+uv sync
+
+# To verify version (optional)
+uv run python --version # Should output: Python 3.11.1
 
 # Run the FastAPI server
-uvicorn main:app --reload --port 8000
+uv run -- uvicorn main:app --reload --port 8000
 ```
 
 ## References
+
 ```
 @inproceedings{cruz2020localization,
   title={Localization of Fake News Detection via Multitask Transfer Learning},
@@ -91,16 +115,16 @@ uvicorn main:app --reload --port 8000
 }
 ```
 
-
 ---
 
 <div align="center">
 
 ## 👥 Creators
+
 [John Manuel Carado](https://github.com/hydraadra112)  
 [Cherilyn Marie Deocampo](https://github.com/chiichann)  
 [Mark Andrei Encanto](https://github.com/Markndrei)  
 [Chariz Dianne Falco](https://github.com/chariz1101)  
-[Jephone Israel Jireh S. Torre](https://github.com/JephoneTorre)  
-</div>
+[Jephone Israel Jireh S. Torre](https://github.com/JephoneTorre)
 
+</div>
