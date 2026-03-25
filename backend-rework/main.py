@@ -27,7 +27,7 @@ async def load_dependencies():
     app.state.model.n_jobs = -1
     app.state.calamancy = calamancy.load("tl_calamancy_md-0.2.0", disable=["tagger", "parser", "ner"])
     
-    nltk.download('punkt')
+    nltk.download('punkt_tab')
     nltk.download('stopwords')
     nltk.download('wordnet')
     

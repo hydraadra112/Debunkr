@@ -40,57 +40,34 @@ Combined in the ensemble with soft voting hyperparameter **on**, it achieved a 9
 
 ## ⚙️ Setup Instructions
 
-To set up the project locally, follow the instructions below for both the frontend and backend components:
-
-### 🔧 Setup
-
-Install UV system-wide
-
-```bash
-# For windows users
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-
-# For Linux
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Install required python version
-uv python install 3.11.1
-
-# To verify if correct python version is installed, run:
-uv python list
-```
-
-Navigate to the desired directory, then:
+To set up the project locally, follow the instructions below:
 
 ```bash
 # Clone the project
 git clone https://github.com/hydraadra112/Debunkr.git
 
-# Navigate to the frontend directory
-cd frontend
-
-# Install dependencies
+# --- Frontend Setup ---
+cd Debunkr/frontend
 npm install
-
-# Run the dev server
 npm run dev -- --open
 
-# Open a new terminal
+# --- Backend Setup (Open a new terminal) ---
+cd Debunkr/backend
 
-# Navigate to the backend directory
-cd backend
+# Create a virtual environment
+python3 -m venv .venv
 
-# Create a virtual environment with Python 3.11.1
-uv venv --python 3.11.1
+# Activate the environment
+# On Linux/macOS:
+source .venv/bin/activate
+# On Windows:
+# .venv\Scripts\activate
 
-# Install all dependencies
-uv sync
-
-# To verify version (optional)
-uv run python --version # Should output: Python 3.11.1
+# Install dependencies
+pip install -r requirements.txt
 
 # Run the FastAPI server
-uv run -- uvicorn main:app --reload --port 8000
+uvicorn main:app --reload --port 8000
 ```
 
 ## References
