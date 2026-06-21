@@ -29,10 +29,10 @@ This is a final project for our **CCS 249 - Natural Language Processing** course
 ## Demonstration Video
 Click thumbnail with embed link to see demonstration video in Youtube.
 
-<a href="https://youtu.be/S63g79Sozdg" target="_blank">
-  <img src="./images/thumbnail.png" alt="Demonstration Video" width="600px">
-</a>
-
+<!--<a href="https://youtu.be/S63g79Sozdg" target="_blank">
+  <img src="./media/thumbnail.png" alt="Demonstration Video" width="600px">
+</a>-->
+<video src="media/debunkr_demo.mp4" controls width="100%"></video>
 ---
 
 ## 📊 Model Results
@@ -41,7 +41,7 @@ The classifier used in the web application is an ensemble learning technique, ut
 
 These algorithms were evaluated using the following metrics: Accuracy, Precision, Recall, and F-1 Score.
 
-<img src="./images/results.png" alt="Model Results"/>
+<img src="./media/results.png" alt="Model Results"/>
 
 Combined in the ensemble with soft voting hyperparameter **on**, it achieved a 93% accuracy. See `model_dev.ipynb` notebook for more details.
 
