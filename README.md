@@ -32,7 +32,7 @@ Click thumbnail with embed link to see demonstration video in Youtube.
 <!--<a href="https://youtu.be/S63g79Sozdg" target="_blank">
   <img src="./media/thumbnail.png" alt="Demonstration Video" width="600px">
 </a>-->
-<video src="media/debunkr_demo.mp4" controls width="100%"></video>
+https://github.com/user-attachments/assets/9e44bd71-c422-4b8f-b8e1-dfb75f87d1ef
 ---
 
 ## 📊 Model Results
